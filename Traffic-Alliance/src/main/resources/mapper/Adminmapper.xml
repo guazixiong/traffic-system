@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.AdminDao">
+
+    <delete id="deletstudent">
+        DELETE from student WHERE StuName=#{stuname} AND School=#{school}
+    </delete>
+
+    <update id="alteradmin" parameterType="com.example.demo.dao.AdminDao">
+        UPDATE school
+        SET Tel=#{tel},adminname=#{adminname},Password=#{password}
+        where Schoolid=#{Schoolid}
+    </update>
+
+    <select id="findstudent" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        select StuId,School,StuName,Tel,Profession,Password from student WHERE School=#{school}
+    </select>
+
+    <insert id="uploadinfo">
+        insert into infor
+        (Title,Conent,InforTime,Author)
+        values (#{title},#{conent},#{inforTime},#{author})
+    </insert>
+
+    <select id="findInforByInforSchool" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.InforDomain">
+        select Title,Conent,InforTime,Author from infor where Author=#{author}
+    </select>
+
+    <select id="findByAdminId" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.AdminDomain">
+        select Schoolid,Password,Schoolid,Tel,SchoolName,adminname from school where Schoolid=#{schoolid}
+    </select>
+
+    <select id="findByAdminId2" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        select * from student where StuName=#{stuname} and School=#{school}
+    </select>
+
+    <select id="findByInforTitle" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.InforDomain">
+        select * from infor where Title=#{title}
+    </select>
+
+    <update id="updateInfor" parameterType="com.example.demo.dao.AdminDao">
+        UPDATE infor
+        SET InforTime=#{InforTime},Conent=#{Conent}
+        where Title=#{Title}
+    </update>
+
+    <select id="showadmin" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.AdminDomain">
+        SELECT Schoolid,Tel,SchoolName,adminname from school WHERE Schoolid=#{schoolid}
+    </select>
+
+    <delete id="deleteinfor">
+        DELETE FROM infor WHERE Title=#{title}
+    </delete>
+
+    <select id="onlyfind" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        SELECT StuId,School,StuName,Tel,Profession,Password from student WHERE StuName=#{stuname}
+    </select>
+
+    <insert id="sendmessage">
+        insert into message
+        (MessageName,SendTime,SendName,Messagecontent)
+        values (#{messagename},#{sendtime},#{sendname},#{messagecontent})
+    </insert>
+
+    <select id="findactivity" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.ActivityDomain">
+        SELECT * FROM activity WHERE meetname=#{meetname}
+    </select>
+
+    <insert id="uploadactivity">
+        INSERT INTO activity
+        (activitytype,activitytime,acticityspace,meetnumber,meetname,connent)
+        values (#{activitytype},#{activitytime},#{acticityspace},#{meetnumber},#{meetname},#{connent})
+    </insert>
+
+    <update id="updateactivity" parameterType="com.example.demo.dao.AdminDao">
+        UPDATE activity
+        SET activitytype=#{activitytype},activitytime=#{activitytime},acticityspace=#{acticityspace},
+        meetnumber=#{meetnumber},meetname=#{meetname},connent=#{connent},peoplename=#{peoplename}
+        where id=#{id}
+    </update>
+</mapper>
+

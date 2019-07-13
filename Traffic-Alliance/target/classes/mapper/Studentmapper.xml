@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.StudentDao">
+    <select id="showall" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        select * from student
+    </select>
+
+    <select id="findByStudentId" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        select StuId,School,StuName,Tel,Profession,Password from student where StuId=#{stuid}
+    </select>
+
+    <insert id="studentsave">
+        insert into student
+        (School,StuId,StuName,Tel,Profession,Password)
+        values (#{school},#{stuId},#{stuName},#{tel},#{profession},#{password})
+    </insert>
+
+    <update id="studentupdate" parameterType="com.example.demo.dao.StudentDao">
+        UPDATE student
+        SET StuId = #{StuId},School = #{School},StuName =#{StuName},Tel=#{Tel} ,
+            Profession=#{Profession},Password=#{Password}
+        WHERE StuId= #{StuId}
+    </update>
+
+    <select id="findInforByInforSchool" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.InforDomain">
+        select Title,Conent,InforTime,Author from infor where Author=#{author}
+    </select>
+
+    <select id="showuser" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        SELECT School,StuId,StuName,Tel,Profession,Password from student WHERE StuId=#{stuId}
+    </select>
+
+    <select id="showinfor" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.InforDomain">
+        SELECT * FROM infor
+    </select>
+
+    <select id="smessage" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.MessageDomain">
+        SELECT MessageName,SendTime,SendName,Messagecontent FROM message WHERE MessageName=#{message}
+    </select>
+
+    <update id="trueexist" parameterType="com.example.demo.dao.StudentDao">
+        UPDATE message
+        SET Ifexist=#{ifexist}
+    </update>
+
+    <select id="showactivity" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.ActivityDomain">
+        SELECT * FROM activity
+    </select>
+
+    <select id="showactivityname" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.ActivityDomain">
+        SELECT id,activitytype,activitytime,acticityspace,meetnumber,meetname,connent,peoplename FROM activity
+    </select>
+
+    <select id="findactivity" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.ActivityDomain">
+        SELECT * FROM activity WHERE meetname=#{meetname}
+    </select>
+
+   <update id="takepart" parameterType="com.example.demo.dao.StudentDao">
+       UPDATE activity
+       SET peoplename=#{peoplename}
+       where meetname=#{meetname}
+   </update>
+
+
+</mapper>
