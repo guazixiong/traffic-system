@@ -8,7 +8,7 @@ public class MessageDomain {
     private Date sendtime;  //发送时间
     private String sendname;  //发送人
     private int ifexist;   //是否已读
-    private int idm;
+    private int idm;    //自动递增
 
     public int getIdm() {
         return idm;

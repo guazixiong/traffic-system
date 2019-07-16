@@ -3,14 +3,14 @@ package com.example.demo.dao.domain;
 import java.util.Date;
 
 public class ActivityDomain {
-    private int id;  //序号
+    private int id;  //序号       数据库创建自动递增
     private String activitytype; //活动类别
     private Date activitytime; //活动时间
     private String acticityspace; //活动地点
     private int meetnumber; //活动人数
     private String meetname; //活动名称
     private String connent; //活动内容
-    private String peoplename;  //参与者
+    private String peoplename="空";  //参与者
 
     public String getPeoplename() {
         return peoplename;

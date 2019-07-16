@@ -47,7 +47,7 @@ Vue.use(Carousel);
 Vue.use(CarouselItem);
 const routes = [
   {
-    name: 'main', path: '/', component: Main,
+      name: 'main', path: '/', component: Main,
     children: [
       {name: 'login', path: '/main/login', component: Login},
       {name: 'introducesys', path: '/main/introducesys', component: IntroduceSYS},
@@ -107,7 +107,7 @@ var App = {
   template: '<router-view></router-view>'
 };
 new Vue({
-  el: '#app',
+  el: '#app',        //根元素
   router, //等价于 router: router
   components: {App},
   template: '<App/>',
