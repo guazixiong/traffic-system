@@ -1,6 +1,5 @@
 <template>
   <div class="introducesys">
-
     <div>
       <el-carousel :interval="4000" type="card" height="200px">
         <el-carousel-item v-for="item in imagesbox" :key="item.id">
